@@ -193,7 +193,7 @@ export default function Home() {
             </Button>
           </Alert>
         )}
-        <DialPad subheader={"Powered by the SuperNetwork"} phase={phase}>
+        <DialPad subheader={"Powered by Twilio SuperNetwork"} phase={phase}>
           <MainWidget
             isOnCall={phase === Phase.Accepted}
             timer={callTimer}

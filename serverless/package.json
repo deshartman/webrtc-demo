@@ -1,6 +1,6 @@
 {
-  "name": "webrtc-demo",
-  "version": "0.0.0",
+  "name": "webrtc-voice-ai",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "test": "tsc --noEmit",
@@ -21,8 +21,5 @@
     "copyfiles": "^2.2.0",
     "twilio-run": "^3.5.3",
     "typescript": "^5"
-  },
-  "resolutions": {
-    "wrap-ansi": "6.0.1"
   }
 }

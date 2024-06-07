@@ -10,6 +10,7 @@ import {
 } from "@twilio-paste/core";
 import { FC } from "react";
 import logo from "../../../public/logo.svg";
+// import logo from "../../../public/logo.png";
 import { Phase } from "@/types/Phases";
 
 export type DialPadProps = {
@@ -39,7 +40,7 @@ const DialPad: FC<DialPadProps> = ({ subheader, phase, children }) => {
           <Image src={logo} alt={"Twilio"} />
         </Box>
         <Heading as={"div"} variant={"heading10"} marginBottom="space0">
-          Web RTC Demo
+          Web Calling Demo
         </Heading>
         {subheader && (
           <Heading as={"div"} variant={"heading40"} marginBottom="space0">

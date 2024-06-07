@@ -1,5 +1,6 @@
 "use client";
 import {
+  Label,
   Option,
   Form,
   FormControl,
@@ -37,7 +38,8 @@ const DeviceControls: FC<DeviceControlsProps> = (props) => {
   return (
     <Form>
       <FormControl>
-        <Select placeholder="Choose microphone">
+         <Label htmlFor="Microphone">Choose a Microphone</Label>
+        <Select id="Microphone">
           {props.audioInputDevices ? (
             props.audioInputDevices.map((audioInput: MediaDeviceInfo) => (
               <Option key={audioInput.deviceId} value={audioInput.deviceId}>
@@ -53,7 +55,8 @@ const DeviceControls: FC<DeviceControlsProps> = (props) => {
       </FormControl>
 
       <FormControl>
-        <Select placeholder="Choose output">
+        <Label htmlFor="Output">Choose Output</Label>
+        <Select id="Output" defaultValue="">
           {props.audioOutputDevices ? (
             props.audioOutputDevices.map((audioOutput: MediaDeviceInfo) => (
               <Option key={audioOutput.deviceId} value={audioOutput.deviceId}>

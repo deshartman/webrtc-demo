@@ -35,3 +35,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+serverless/pnpm-lock.yaml
+client-ui/pnpm-lock.yaml

@@ -36,6 +36,13 @@ Check out this [blog](https://www.twilio.com/blog/enable-voip-calls-on-twilio-fl
 ## Configuration
 In the `serverless` folder create an `.env` file using the `.env.example`, populate the required values (from above)
 
+## Install Dependencies
+In the `client-ui` folder, run `yarn` or `npm install`
+In the `serverless` folder, run `yarn` or `npm install`
+
+## Build the Serverless App
+In the `serverless` folder, run `yarn build` or `npm run build`
+
 ## Build the Next App
 In the `client-ui` folder, run `yarn build` or `npm run build`.  This will create the next app and move the output to the `../serverless/dist/assets` folder
 
