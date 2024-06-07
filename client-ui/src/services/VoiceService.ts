@@ -5,13 +5,16 @@ class VoiceService {
   token: string = "";
   identity: string = "";
 
-  async init(identity: string): Promise<Device> {
+  async init(identity: string, twimlAppSID: string): Promise<Device> {
     try {
       const resp = await fetch(
         `${process.env.NEXT_PUBLIC_DOMAIN_OVERRIDE || ""}/api/token`,
         {
           method: "POST",
-          body: JSON.stringify({ identity }),
+          body: JSON.stringify({
+            identity,
+            twimlAppSID
+          }),
           headers: {
             "Content-Type": "application/json",
           },

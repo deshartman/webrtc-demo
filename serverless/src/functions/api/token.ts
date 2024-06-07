@@ -12,11 +12,20 @@ type MyContext = {
   ACCOUNT_SID: string;
   TWILIO_API_KEY: string;
   TWILIO_API_SECRET: string;
-  TWIML_APP_SID: string;
+  //TWIML_APP_SID: string;
 };
 
+/*****************
+ * 
+ * Pass in the identity and the twimlAppSID to generate a token, pointing to the TwiML App SID
+ */
 type MyEvent = {
-  identity: string;
+  identity: string,
+  twimlAppSID: string,
+  request: {
+    cookies: {},
+    headers: {}
+  }
 };
 
 const TOKEN_TTL_IN_SECONDS = 60 * 60 * 6;
@@ -45,10 +54,17 @@ export const handler: ServerlessFunctionSignature<MyContext, MyEvent> =
       callback(null, response);
     }
 
+    if (!event.twimlAppSID) {
+      response.setBody({ error: "Twiml App SID not provided. Please create a TwiML App first" });
+      response.setStatusCode(400);
+      console.error("Missing twimlAppSID in request");
+      callback(null, response);
+    }
+
     const AccessToken = Twilio.jwt.AccessToken;
 
     const voiceGrant = new VoiceGrant({
-      outgoingApplicationSid: context.TWIML_APP_SID,
+      outgoingApplicationSid: event.twimlAppSID,  //context.TWIML_APP_SID,
       incomingAllow: true,
     });
 

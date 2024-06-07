@@ -25,13 +25,18 @@ export default function Home() {
 
   /**
    *
-   * Get a token and register the device
+   * Get a twimlAppSID URL parameter, create token and register the device
    *
    */
   useEffect(() => {
+    console.log("Starting; Grab the TwiML App SID from the URL parameter twimlAppSID");
+    const searchParams = new URLSearchParams(window.location.search);
+    const twimlAppSID: string = searchParams.get("twimlAppSID") || "";
+    console.log("TwiML App SID: ", twimlAppSID);
+
     console.log("Init Voice Service");
     setStatusText("Initializing");
-    VoiceService.init("demo").then((device) => {
+    VoiceService.init("demo", twimlAppSID).then((device) => {
       console.log("Init Voice Service - Done");
       setDevice(device);
       registerDeviceHandlers(device);
@@ -67,7 +72,7 @@ export default function Home() {
         setCallTimer(0);
         /** Call Timer **/
         const interval = setInterval(
-          () => setCallTimer((prev) => prev + 1),
+          () => setCallTimer((prev:number) => prev + 1),
           1000
         );
         return () => clearInterval(interval);
@@ -89,7 +94,7 @@ export default function Home() {
       case Phase.Ready:
         console.log("Press during ready");
         if (device) {
-          device.connect().then((call) => {
+          device.connect().then((call: Call) => {
             registerCallHandler(call);
             setCall(call);
           });
